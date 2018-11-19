@@ -1,0 +1,991 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OCS</title>
+    <!-- Favicon Icon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/ico" href="images/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Ion Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <style>
+        .navbar-header {
+            font-size: 30px;
+        }
+
+        .navbar-header i {
+            margin-right: 10px;
+        }
+
+        .team-item-name {
+            font-size: 30px;
+        }
+
+        .team-item:hover .team-item-image::after {
+            background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+        }
+
+        .team-item-image .icon {
+            width: 50%;
+        }
+
+        .team-item-image .detail-btn {
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            top: 60px;
+        }
+
+        .menu-modal p {
+            color: white;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        .menu-modal h2 {
+            font-weight: bold;
+        }
+
+    </style>
+    <script>
+        function openMenuModal(type) {
+            $('.menu-modal').hide();
+            switch (type) {
+                case 'service':
+                    $('.menunav').after($('.serviceModal'));
+                    $('.serviceModal').show();
+                    break;
+                case 'activity':
+                    $('.menunav').after($('.activityModal'));
+                    $('.activityModal').show();
+                    break;
+                case 'solution':
+                    $('.menunav').after($('.solutionModal'));
+                    $('.solutionModal').show();
+                    break;
+                case 'partner':
+                    $('.menunav').after($('.partnerModal'));
+                    $('.partnerModal').show();
+                    break;
+            }
+        }
+
+        function closeMenuModal() {
+            $('.menu-modal').hide();
+        }
+
+        $(function() {
+            $('section').on('click ', function() {
+                closeMenuModal();
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top menu-top">
+        <div class="container">
+            <div class="navbar-header">
+                <i class="fa fa-bars"></i><span>OCS</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-brackets-id="2570" class="page-scroll" style="color: black;"><input data-brackets-id="2571" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+"><i data-brackets-id="2572" class="fa fa-search" style="
+    /* position: absolute; */
+    margin-left: -20px;
+    color: gray;
+"></i></a></li>
+                        <li><a class="page-scroll">购物车</a></li>
+                        <li><a class="page-scroll" href="orderList.html">订单</a></li>
+                        <li><a class="page-scroll loginUser">登录</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav style="position: relative;">
+                    <ul class="nav navbar-nav menunav">
+                        <li><a class="page-scroll active" href="#home">主页</a></li>
+                        <li><a class="page-scroll" href="#work-process">工作流程</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('service')" href="#service">产品与服务</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('activity')" href="#portfolio">最新活动</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('solution')" href="#team">解决方案</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('partner')" href="#blog">合作伙伴</a></li>
+                        <li><a data-brackets-id="3223" class="page-scroll" href="login.html#r" style="
+    color: #2196F3;
+    font-weight: bold;
+">免费注册</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+    <!-- Slider -->
+    <section id="home" class="welcome-area">
+        <div class="welcome-slider-area">
+            <div id="welcome-slide-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                <ol class="carousel-indicators carousel-indicators-slider">
+                    <li data-target="#welcome-slide-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#welcome-slide-carousel" data-slide-to="1" class=""></li>
+                    <li data-target="#welcome-slide-carousel" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="single-slide-item slide-1">
+                            <div class="hero-clouds"></div>
+                            <div class="single-slide-item-table">
+                                <div class="single-slide-item-tablecell">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2>网站订制建设 <br><span>with customization</span></h2>
+                                                <span></span>
+                                                <p>您的需求 + 我们的努力 = 您的专属品牌</p>
+                                                <a class="btn btn-lg btn-custom" href="selectGoods.html">立即购买</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-slide-item slide-2">
+                            <div class="hero-clouds"></div>
+                            <div class="single-slide-item-table">
+                                <div class="single-slide-item-tablecell">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2>提供优质服务<br><span>with service</span></h2>
+                                                <span></span>
+                                                <p>服务创造价值，专业赢得信任。<br>加入我们，我们将为您提供最优质、最专业的服务。</p>
+                                                <a class="btn btn-lg btn-custom" href="selectGoods.html">立即购买</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="single-slide-item slide-3">
+                            <div class="hero-clouds"></div>
+                            <div class="single-slide-item-table">
+                                <div class="single-slide-item-tablecell">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <h2>专业平台管理<br><span>with management</span></h2>
+                                                <span></span>
+                                                <p>企业精细化运营 + 数据驱动式管理 + 业务流程化规范</p>
+                                                <a class="btn btn-lg btn-custom" href="selectGoods.html">立即购买</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Slider -->
+    <!-- About Us -->
+    <section id="about" class="about-us section-padding" style="display: none;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="section-title">
+                    <h2>About us</h2>
+                    <span></span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod tempor enim minim veniam quis notru exercit ation Lorem ipsum dolor sit amet.Veniam quis notru exercit.</p>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="about_single">
+                        <i class="ion-ios-monitor-outline"></i>
+                        <h4>Our Mission</h4>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="about_single">
+                        <i class="ion-ios-eye-outline"></i>
+                        <h4>Our vision</h4>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="about_single">
+                        <i class="ion-ios-people-outline"></i>
+                        <h4>Our history</h4>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-3 col-xs-12">
+                    <div class="about_single">
+                        <i class="ion-ios-loop"></i>
+                        <h4>Our process</h4>
+                        <span></span>
+                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr sed diam nonumy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Us -->
+    <!-- Process Box -->
+    <section id="work-process" class="process-box section-padding">
+        <div class="container">
+            <div class="row text-center">
+                <div class="section-title text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="section-title-white">工作流程</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-sm-6">
+                    <div class="process-item text-center process-item-alt">
+                        <div class="process-item-icon">
+                            <span class="ion-ios-lightbulb-outline"></span>
+                        </div>
+                        <div class="process-item-content">
+                            <span class="process-item-number">1</span>
+                            <h3 class="process-item-title">Interview</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="process-item highlight text-center process-item-alt">
+                        <div class="process-item-icon">
+                            <span class="ion-ios-bookmarks-outline"></span>
+                        </div>
+                        <div class="process-item-content">
+                            <span class="process-item-number">2</span>
+                            <h3 class="process-item-title">Plan</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="process-item text-center process-item-alt">
+                        <div class="process-item-icon">
+                            <span class="ion-ios-color-filter-outline"></span>
+                        </div>
+                        <div class="process-item-content">
+                            <span class="process-item-number">3</span>
+                            <h3 class="process-item-title">Design</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="process-item highlight text-center process-item-alt">
+                        <div class="process-item-icon">
+                            <span class="ion-ios-world-outline"></span>
+                        </div>
+                        <div class="process-item-content">
+                            <span class="process-item-number">4</span>
+                            <h3 class="process-item-title">Development</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="process-item text-center process-item-alt">
+                        <div class="process-item-icon">
+                            <span class="ion-ios-gear-outline"></span>
+                        </div>
+                        <div class="process-item-content">
+                            <span class="process-item-number">5</span>
+                            <h3 class="process-item-title">Testing</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-2 col-sm-6">
+                    <div class="process-item highlight text-center process-item-alt">
+                        <div class="process-item-icon">
+                            <span class="ion-ios-paperplane-outline"></span>
+                        </div>
+                        <div class="process-item-content">
+                            <span class="process-item-number">6</span>
+                            <h3 class="process-item-title">Delivery</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Process Box -->
+    <!-- Our Services -->
+    <section id="service" class="our_services section-padding">
+        <div class="container">
+            <div class="row text-center">
+                <div class="section-title text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h2>全球领先、安全、稳定的云计算产品</h2>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="service">
+                        <div class="icon"><i class="ion-ios-printer-outline"></i></div>
+                        <h4>会员卡服务</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="service">
+                        <div class="icon"><i class="ion-ios-people-outline"></i></div>
+                        <h4>园区服务</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="service">
+                        <div class="icon"><i class="ion-ios-world-outline"></i></div>
+                        <h4>支付服务</h4>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="service">
+                        <div class="icon"><i class="ion-ios-mic-outline"></i></div>
+                        <h4>售后服务</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Our Services -->
+    <!-- Our Portfolio -->
+    <section id="portfolio" class="our_portfolio section-padding">
+        <div class="container">
+            <div class="row text-center">
+                <div class="section-title text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h2 class="section-title-white">朋安易加入校园计划</h2>
+                    <span></span>
+                    <p class="section-title-white">由金邦达以业务创新及客户体验为核心，全力打造创新网络金融支付平台系统朋安易支付系统，正式走进了校园。方便快捷的支付需求，芯片级的安全保护，将校园智能卡支付推向了一个新的高度。</p>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <ul id="filters" class="clearfix">
+                <li><span class="filter active" data-filter=".app, .icon, .logo, .web">All</span></li>
+                <li><span class="filter" data-filter=".app">scene</span></li>
+                <li><span class="filter" data-filter=".icon">card</span></li>
+                <li><span class="filter" data-filter=".logo">team</span></li>
+            </ul>
+            <div id="portfoliolist">
+                <div class="portfolio app" data-cat="app">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">
+			 <img src="images/activity/damen1.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <div class="portfolio app" data-cat="app">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/damen2.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <div class="portfolio app" data-cat="app">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/shitang.jpg" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <div class="portfolio app" data-cat="app">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/shuifang.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <br>
+                <div class="portfolio icon" data-cat="icon">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/card.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <div class="portfolio logo" data-cat="logo">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/team1.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <div class="portfolio logo" data-cat="logo">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/team4.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+                <div class="portfolio logo" data-cat="logo">
+                    <div class="portfolio-wrapper">
+                        <a href="#" data-toggle="modal" data-target="#projectModal">	
+			 <img src="images/activity/team3.png" alt="" />
+			 </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tlinks">Collect from <a href="http://www.cssmoban.com/">网页模板</a></div>
+        <!-- Overlay Modal  -->
+        <div class="modal fade" id="projectModal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Project Overview</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <h4>New home display </h4> -->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor massa sed velit egestas vulputate. Morbi turpis tellus, porta in cursus at, finibus vitae dui. Nam mollis quam a sem iaculis euismod. Pellentesque habitant morbi tristique senectus.</p>
+                        <div class="summary-list row">
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-user fa-fw"></i> Name
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin"> Project Name </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-paint-brush fa-fw"></i> Created by
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin">Team Osahan</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-code fa-fw"></i> Skills
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin">
+                                        Photoshop and coraldraw ,
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-desktop fa-fw"></i> Services
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin">
+                                        Designing Service
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-link fa-fw"></i> Project Url
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin"> <a href="#">www.shapebootstrap.net</a> </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-share-alt fa-fw"></i> Share
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <ul class="social-share-new">
+                                        <a href="#" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                                        <a href="#" class="btn-social btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                                        <a href="#" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a href="#" class="btn-social btn-email"><i class="fa fa-envelope-o"></i></a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg btn-custom btn-block">Live Preview</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </section>
+    <!-- End Our Portfolio -->
+    <!-- Team -->
+    <section id="team" class="team section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h2>解决方案</h2>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="team-item">
+                        <div class="team-item-image">
+                            <img src="images/plan/dianshang.jpg" alt="">
+                            <div class="team-item-detail">
+                                <img src="images/plan/dianshang_icon.png" class="icon" />
+                                <p>
+                                    结合大数据能力帮助电商企业快速搭建平台、应对业务高并发，剖析秒杀、视频直播等场景
+                                </p>
+                                <ul class="social-share-new">
+                                    <a href="#" class="detail-btn">查看详情</a>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-item-descr font-alt">
+                            <div class="team-item-name">
+                                电商解决方案
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="team-item">
+                        <div class="team-item-image">
+                            <img src="images/plan/app.jpg" alt="">
+                            <div class="team-item-detail">
+                                <img src="images/plan/app_icon.png" class="icon" />
+                                <p>
+                                    助力企业快速构建APP，高效实现移动数字化转型
+                                </p>
+                                <ul class="social-share-new">
+                                    <a href="#" class="detail-btn">查看详情</a>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-item-descr font-alt">
+                            <div class="team-item-name">
+                                App解决方案
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="team-item">
+                        <div class="team-item-image">
+                            <img src="images/plan/web.jpg" alt="">
+                            <div class="team-item-detail">
+                                <img src="images/plan/web_icon.png" class="icon" />
+                                <p>
+                                    依据网站不同发展阶段，为网站类用户提供最佳上云方案，有效降低运维难度和整体IT成本
+                                </p>
+                                <ul class="social-share-new">
+                                    <a href="#" class="detail-btn">查看详情</a>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-item-descr font-alt">
+                            <div class="team-item-name">
+                                网站解决方案
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Team -->
+    <!-- Latest Blog -->
+    <section id="blog" class="blog section-padding">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="section-title text-center">
+                    <br>
+                    <br>
+                    <br>
+                    <h2>合作伙伴</h2>
+                    <span></span>
+                    <p>客户第一是我们坚持的第一原则，合作伙伴可提供专业的金邦达知识， 为不同用户定制个性化服务，不断提升客户体验
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="blog-item">
+                    <div style="text-align: center;">
+                        <img src="images/partner/hzgj.png" style="width: 50%;" />
+                    </div>
+                    <div class="excerpt">
+                        <p style="text-indent:28px;"> 数梦工场联合杭州公交集团共同开创公交一体化移动支付原创应用，基于手机离线、机具离线的情况下，结合用户信用数据创新实现“先享后付”。乘客通过杭州公交APP，可以实时查询公交信息，掐点出行，不再需要排队圈钱、兑零。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="blog-item">
+                    <div style="text-align: center;">
+                        <img src="images/partner/qsc.png" style="width: 50%;" />
+                    </div>
+                    <div class="excerpt">
+                        <p style="text-indent:28px;"> 轻松筹，领先的全民健康保障平台。袋鼠云携轻松筹基于阿里云数加平台建立了大数据运营中心，探索资金流向公示追踪机制、AI风险指数监控、个性化精准推荐、大数据征信等数据智能应用，让用户在更高效透明的模式下参与公益。 </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </section>
+    <!-- End Latest Blog -->
+    <!-- Contact Us -->
+    <section id="contact" class="contact section-padding" style="display: none;">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h2>Contact Us</h2>
+                    <span></span>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elitsed eiusmod tempor enim minim veniam quis notru exercit ation Lorem ipsum dolor sit amet.Veniam quis notru exercit.</p>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="contact-left box-padding">
+                        <h4 class="sub-title">Write Us</h4>
+                        <form action="" method="POST" role="form" class="form">
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Name" type="text">
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" placeholder="Email" type="email">
+                            </div>
+                            <div class="form-group">
+                                <textarea style="height: 200px;" class="form-control" placeholder="Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-lg btn-custom">send message</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <div class="contact-right box-padding">
+                        <h4 class="sub-title">We Are Here</h4>
+                        <div class="contact-info row">
+                            <ul class="contact-list col-md-6 col-sm-6 col-xs-12">
+                                <li class="contact-list-title"><i class="ion-ios-home"></i>New York Office</li>
+                                <li><i class="ion-ios-location"></i>5470 Madison Street Severna Park, MD 21146</li>
+                                <li><i class="ion-android-call"></i>321-654-0987</li>
+                                <li><i class="ion-ios-email"></i>new-york@osahan.estate</li>
+                            </ul>
+                            <ul class="contact-list col-md-6 col-sm-6 col-xs-12">
+                                <li class="contact-list-title"><i class="ion-ios-home"></i>San Jose Office</li>
+                                <li><i class="ion-ios-location"></i>7094 Leeton Ridge Mountain View, CA 94043</li>
+                                <li><i class="ion-android-call"></i>123-456-7890</li>
+                                <li><i class="ion-ios-email"></i>san-jose@osahan.estate</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!---<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d406260.6700580232!2d-122.09760548597289!3d37.29723161091337!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fcae48af93ff5%3A0xb99d8c0aca9f717b!2sSan+Jose%2C+CA%2C+USA!5e0!3m2!1sen!2sin!4v1483028725746" width="100%" height="188" frameborder="0" style="border:0" allowfullscreen></iframe>--->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Us -->
+    <!-- Footer -->
+    <section id="footer" class="footer section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">About Us</h3>
+                    <ul class="menu">
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">支持计划</a></li>
+                        <li><a href="#">新手学堂</a></li>
+                        <li><a href="#">自助工具</a></li>
+                        <li><a href="#">咨询与设计</a></li>
+                        <li><a href="#">公告</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">Services</h3>
+                    <ul class="menu">
+                        <li><a href="#">管理控制台</a></li>
+                        <li><a href="#">备案管理</a></li>
+                        <li><a href="#">域名控制台</a></li>
+                        <li><a href="#">账号管理</a></li>
+                        <li><a href="#">索取发票</a></li>
+                        <li><a href="#">合规性</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">General Links</h3>
+                    <ul class="menu">
+                        <li><a href="#">域名信息查询</a></li>
+                        <li><a href="#">定价</a></li>
+                        <li><a href="#">客户案例</a></li>
+                        <li><a href="#">分析师报告</a></li>
+                        <li><a href="#">举报中心</a></li>
+                        <li><a href="#">产品图标</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">Resource</h3>
+                    <ul class="menu">
+                        <li><a href="#">帮助文档</a></li>
+                        <li><a href="#">开发者中心</a></li>
+                        <li><a href="#">考试认证</a></li>
+                        <li><a href="#">在线工作坊</a></li>
+                        <li><a href="#">科技头条</a></li>
+                        <li><a href="#">教程教学</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer -->
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="footer-social text-center">
+                        <ul class="social-share-new">
+                            <a href="#" class="btn-social btn-behance"><i class="fa fa-behance"></i></a>
+                            <a href="#" class="btn-social btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                            <a href="#" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn-social btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="#" class="btn-social btn-skype"><i class="fa fa-skype"></i></a>
+                            <a href="#" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" class="btn-social btn-email"><i class="fa fa-envelope-o"></i></a>
+                        </ul>
+                    </div>
+                    <div class="text-center">©金邦达集团 版权所有 1998-2018 粤ICP备06089952号-1 粤公网安备 44040202000557号 | 法律声明</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Bottom -->
+
+    <div class="menu-modal serviceModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>热门产品</h2>
+        <div class="row" style="    margin-top: 30px;
+    padding: 25px;">
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-modal activityModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>最新活动</h2>
+        <div class="row" style="    margin-top: 30px;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-modal solutionModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>解决方案</h2>
+        <div class="row" style="    margin-top: 30px;
+    padding: 25px;">
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-modal partnerModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>合作伙伴</h2>
+        <div class="row" style="   
+    padding: 25px;">
+            <div class="col-md-4">
+                <p>合作计划</p>
+                <ul>
+                    <li>朋安易会员卡计划</li>
+                    <li>园区会员卡计划</li>
+                    <li>社区卡计划</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p>合作公司</p>
+                <ul>
+                    <li>杭州公交</li>
+                    <li>轻松筹</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p>客户案例</p>
+                <ul>
+                    <li>案例1</li>
+                    <li>案例2</li>
+                    <li>案例3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Custom js -->
+    <script src="js/custom.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Portfolio Filters -->
+    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+</body>
+
+</html>

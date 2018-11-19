@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070) -->
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OCS</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./login/css">
+    <link rel="stylesheet" href="./login/bootstrap.min.css">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./login/form-elements.css">
+    <link rel="stylesheet" href="./login/style.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    <!-- Favicon and touch icons -->
+    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" href="images/favicon.ico">
+    <style>
+        /* entire container, keeps perspective */
+
+        .flip-container {
+            perspective: 1000;
+        }
+
+        /* flip the pane when hovered */
+
+        .flip-container.hover .flipper {
+            transform: rotateY(180deg);
+        }
+
+        .flip-container,
+        .front,
+        .back {
+            width: 100%;
+            height: 390px;
+        }
+
+        /* flip speed goes here */
+
+        .flipper {
+            transition: 1s;
+            transform-style: preserve-3d;
+
+            position: relative;
+        }
+
+        /* hide back of pane during swap */
+
+        .front,
+        .back {
+            backface-visibility: hidden;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        /* front pane, placed above back */
+
+        .front {
+            z-index: 2;
+        }
+
+        /* back, initially hidden pane */
+
+        .back {
+            transform: rotateY(180deg);
+        }
+
+
+
+        .form-top-left .errMsg {
+            color: orangered;
+        }
+
+        #toast-container {
+            top: 245px;
+            left: 43%;
+        }
+    </style>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script>
+        function flipCard() {
+            document.querySelector('.flip-container').classList.toggle('hover');
+            $('.errMsg').text('');
+            if (location.hash == '#r') {
+                location.hash = '#l';
+            } else if (location.hash == '#l') {
+                location.hash = '#r';
+            } else {
+                console.log('location.hash is ' + location.hash);
+            }
+        }
+
+        function goReg() {
+            if (location.hash != '#r') {
+                flipCard();
+            }
+        }
+
+        $(function() {
+
+            if (location.hash == '#r') {
+                flipCard();
+            }
+
+            $('.regBtn').on('click', function() {
+                let name = $('#regForm').find('#reg-username').val();
+                let pwd = $('#regForm').find('#reg-password').val();
+                let regedName = localStorage.setItem('username', name);
+                let regedPwd = localStorage.setItem('password', pwd);
+
+                var count = 0;
+                $('#regForm').find('input[type="text"], input[type="password"], textarea').each(function() {
+                    if ($(this).val() == "") {
+                        $(this).addClass('input-error');
+                        $('.errMsg').text('请填写用户名和密码');
+                    } else {
+                        $(this).removeClass('input-error');
+                        count++;
+                    }
+                });
+                if (count == $('#regForm').find('input[type="text"], input[type="password"], textarea').length) {
+                    // Override global options
+                    toastr.success('注册成功！')
+                    setTimeout(function() {
+                        toastr.remove()
+                        flipCard();
+                    }, 1500)
+                }
+
+
+
+            })
+
+            $('.loginBtn').on('click', function() {
+                let name = $('#loginForm').find('#form-username').val();
+                let pwd = $('#loginForm').find('#form-password').val();
+                let regedName = localStorage.getItem('username');
+                let regedPwd = localStorage.getItem('password');
+                console.log(name)
+                console.log(regedName)
+                console.log(pwd)
+                console.log(regedPwd)
+
+                $('#regForm').find('input[type="text"], input[type="password"], textarea').each(function() {
+                    if ($(this).val() == "") {
+                        $(this).addClass('input-error');
+                        $('.errMsg').text('请填写用户名和密码');
+                    } else {
+                        $(this).removeClass('input-error');
+                    }
+                });
+
+                if (name == regedName && pwd == regedPwd) {
+                    sessionStorage.setItem('login', 'yes');
+                    location.href = 'index.html';
+                } else {
+                    $('.errMsg').text('您的用户名或者密码不正确');
+                }
+            })
+        })
+    </script>
+</head>
+
+<body style="overflow: hidden;">
+
+
+    <!-- Top content -->
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2 text">
+                        <h1><strong>OCS</strong> 商户中心</h1>
+                        <div class="description">
+                            <p>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-container">
+                    <div class="flipper">
+                        <div class="front">
+                            <!-- 前面内容 -->
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3 form-box">
+                                    <div class="form-top">
+                                        <div class="form-top-left" style="margin-top: 20px;">
+                                            <h3>账户登录</h3>
+                                            <p class="errMsg"></p>
+                                        </div>
+                                        <div class="form-top-right">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-bottom">
+                                        <form role="form" id="loginForm" class="login-form">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="form-username">Username</label>
+                                                <input type="text" name="form-username" placeholder="用户名" class="form-username form-control" id="form-username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="form-password">Password</label>
+                                                <input type="password" name="form-password" placeholder="密码" class="form-password form-control" id="form-password">
+                                            </div>
+                                            <button type="button" class="btn loginBtn">登录</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="back">
+                            <!-- 背面内容 -->
+                            <div class="row">
+                                <div class="col-sm-6 col-sm-offset-3 form-box">
+                                    <div class="form-top">
+                                        <div class="form-top-left" style="margin-top: 20px;">
+                                            <h3>账户注册</h3>
+                                            <p class="errMsg"></p>
+                                        </div>
+                                        <div class="form-top-right">
+                                            <i class="fa fa-lock" aria-hidden="true"></i>
+                                        </div>
+                                    </div>
+                                    <div class="form-bottom">
+                                        <form role="form" id="regForm" class="login-form">
+                                            <div class="form-group">
+                                                <label class="sr-only" for="reg-username">Username</label>
+                                                <input type="text" name="reg-username" placeholder="用户名" class="form-username form-control" id="reg-username">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only" for="reg-password">Password</label>
+                                                <input type="password" name="reg-password" placeholder="密码" class="form-password form-control" id="reg-password">
+                                            </div>
+                                            <button type="button" class="btn regBtn" style="background: #b8de5e;color: #373737;">注册</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 social-login">
+                        <h3> </h3>
+                        <div class="social-login-buttons">
+                            <a class="btn btn-link-2" onclick="goReg()">
+	                        		<i class="fa fa-leaf"></i> 免费注册
+	                        	</a>
+                            <a class="btn btn-link-2" href="index.html#">
+	                        		<i class="fa fa-home"></i> 首页
+	                        	</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Javascript -->
+    <script src="./login/jquery-1.11.1.min.js"></script>
+    <script src="./login/bootstrap.min.js"></script>
+    <script src="./login/jquery.backstretch.min.js"></script>
+    <script src="./login/scripts.js"></script>
+
+    <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+
+
+    <div class="backstretch" style="left: 0px; top: 0px; overflow: hidden; margin: 0px; padding: 0px; height: 100%; width: 100%; z-index: -999999; position: fixed;"><img src="./login/1.jpg" style="position: absolute; margin: 0px; padding: 0px; border: none; width: 102%; height: 100%; max-height: none; max-width: none; z-index: -999999; left: -2px; top: 0px;"></div>
+</body>
+
+</html>

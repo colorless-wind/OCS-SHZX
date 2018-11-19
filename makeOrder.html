@@ -1,0 +1,1614 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OCS</title>
+    <!-- Favicon Icon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Ion Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <!-- smart_wizard -->
+    <link href="css/smart_wizard.min.css" rel="stylesheet" type="text/css">
+    <link href="css/smart_wizard_theme_circles.css" rel="stylesheet" type="text/css">
+
+    <link href="timeline/css/history.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <style>
+        .navbar-header {
+            font-size: 30px;
+        }
+
+        .navbar-header i {
+            margin-right: 10px;
+        }
+
+        .team-item-name {
+            font-size: 30px;
+        }
+
+        .team-item:hover .team-item-image::after {
+            background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+        }
+
+        .team-item-image .icon {
+            width: 50%;
+        }
+
+        .team-item-image .detail-btn {
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            top: 60px;
+        }
+
+        .menu-modal p {
+            color: white;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        .menu-modal h2 {
+            font-weight: bold;
+        }
+
+
+
+
+        .panel {
+            margin-bottom: 15px;
+        }
+
+        .panel-warning>.panel-heading {
+            color: black;
+            background-color: white;
+            border-color: #ffc599;
+            padding: 0px 15px;
+            font-weight: bold;
+            /*            text-shadow: -1px 1px 1px grey;*/
+        }
+
+        .panel-success>.panel-heading {
+            color: black;
+            font-weight: bold;
+        }
+
+        .sw-theme-default>ul.step-anchor>li {
+            width: 24.8%;
+        }
+
+        .btn-toolbar.sw-toolbar {
+            display: none;
+        }
+    </style>
+    <script>
+        function openMenuModal(type) {
+            $('.menu-modal').hide();
+            switch (type) {
+                case 'service':
+                    $('.menunav').after($('.serviceModal'));
+                    $('.serviceModal').show();
+                    break;
+                case 'activity':
+                    $('.menunav').after($('.activityModal'));
+                    $('.activityModal').show();
+                    break;
+                case 'solution':
+                    $('.menunav').after($('.solutionModal'));
+                    $('.solutionModal').show();
+                    break;
+                case 'partner':
+                    $('.menunav').after($('.partnerModal'));
+                    $('.partnerModal').show();
+                    break;
+            }
+        }
+
+        function closeMenuModal() {
+            $('.menu-modal').hide();
+        }
+
+        $(function() {
+            /*$('#orderBtn').on('click ', function() {
+                $('#projectModal').modal();
+            })*/
+
+            $('.payWay').on('click ', function() {
+                var target = $(this);
+                var targetText = target.text().trim();
+                $('.payWay').css('border-color', '#ccc');
+                $('.payWay').css('color', 'gray');
+                $('.payWay').css('font-weight', '100');
+                target.css('border-color', 'orangered');
+                target.css('color', 'orangered');
+                target.css('font-weight', 'bold');
+                if (targetText == '微信') {
+                    $('#qrCodeImg').attr('src', 'images/qr_hd.png');
+                } else if (targetText == '支付宝') {
+                    $('#qrCodeImg').attr('src', 'images/qr_hd2.png');
+                } else if (targetText == '财付通') {
+                    $('#qrCodeImg').attr('src', 'images/qr_hd3.png');
+                } else if (targetText == '银联') {
+                    $('#qrCodeImg').attr('src', 'images/qr_hd4.png');
+                } else {
+                    console.log('targetText is ' + targetText);
+                }
+            })
+
+            $('#smartwizard').smartWizard();
+
+            // Initialize the showStep event
+            $("#smartwizard").on("showStep", function(e, anchorObject, stepNumber, stepDirection) {
+                if (stepNumber == 3) {
+                    initTimeline();
+                }
+            });
+
+            if (location.hash == '#step-4') {
+                console.log('init step4');
+                initTimeline();
+            }
+
+
+        })
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top menu-top" style="background-color: black;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <i class="fa fa-bars" onclick="javascript:location.href='index.html';"></i><span onclick="javascript:location.href='index.html';">OCS</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-brackets-id="2570" class="page-scroll" style="color: black;"><input data-brackets-id="2571" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+"><i data-brackets-id="2572" class="fa fa-search" style="
+    /* position: absolute; */
+    margin-left: -20px;
+    color: gray;
+"></i></a></li>
+                        <li><a class="page-scroll">购物车</a></li>
+                        <li><a class="page-scroll">工单</a></li>
+                        <li><a class="page-scroll">费用</a></li>
+                        <li><a class="page-scroll" href="main.html">控制台</a></li>
+                        <li><a class="page-scroll loginUser"><img src="images/logo.png" /></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top: 66px;">
+        <div id="smartwizard" class="sw-main sw-theme-arrows">
+            <ul class="nav nav-tabs step-anchor">
+                <li class="nav-item"><a href="#step-1" class="nav-link">Step 1<br><small>选择配置</small></a></li>
+                <li class="nav-item"><a href="#step-2" class="nav-link">Step 2<br><small>支付订单</small></a></li>
+                <li class="nav-item"><a href="#step-3" class="nav-link">Step 3<br><small>支付成功</small></a></li>
+                <li class="nav-item"><a href="#step-4" class="nav-link">Step 4<br><small>生成场景</small></a></li>
+            </ul>
+            <div class="sw-container tab-content" style="min-height: 170px;">
+                <div id="step-1" class="tab-pane step-content">
+                    <div class="panel panel-warning" style="margin-top: 15px;">
+                        <div class="panel-heading">计费方式</div>
+                        <div class="panel-body">
+                            <button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-primary active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">包年包月</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">包年包月</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">包年包月</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button>
+                        </div>
+                    </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">地域</div>
+                        <div class="panel-body">
+                            <button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-primary active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">随机分配</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">华中三区</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">华中一区</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button>
+                        </div>
+                    </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">镜像</div>
+                        <div class="panel-body">
+                            <button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-primary active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">系统镜像</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">共享镜像</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">自定义镜像</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button>
+                        </div>
+                    </div>
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">存储</div>
+                        <div class="panel-body">
+                            <button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-primary active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">系统盘 40GB</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button><button _ngcontent-c42="" nz-button="" type="button" style="margin-right:10px;" class="btn btn-default active ng-star-inserted" data-spm-click="gostr=/aliyun;locaid=PrePaid"><!----> 
+        <span _ngcontent-c42="" class=""></span>
+        <span _ngcontent-c42="">数据盘 40GB</span>
+        <span _ngcontent-c42="" class="buyIconfont badge icon-text-hui"></span>
+       </button>
+                        </div>
+                    </div>
+
+                    <div class="bs-example" data-example-id="table-within-panel">
+                        <div class="panel panel-success">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">实例</div>
+                            <div class="panel-body">
+                                <p>您可以了解目前在售的所有ECS实例规格族的信息，包括每种规格族的特点、在售规格和适用场景。实例是能够为您的业务提供计算服务的最小单位，它是以一定的规格来为您提供相应的计算能力的。</p>
+                            </div>
+                            <div _ngcontent-c11="" class="instanceTypeTable eb-padding-top-10 eb-padding-bottom-10" id="instanceTypeValidatorId">
+                                <advance-grid _ngcontent-c11="" _nghost-c48="">
+                                    <nz-table _ngcontent-c48="" class="advanceGrid" style="min-height: 50px;">
+                                        <div class="ant-table-wrapper">
+                                            <nz-spin style="display: block;">
+                                                <div>
+                                                    <div class="ant-spin">
+                                                        <span class="ant-spin-dot"><i></i><i></i><i></i><i></i></span>
+                                                        <div class="ant-spin-text"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="ant-spin-container">
+                                                    <div>
+                                                        <div class="ant-table ant-table-fixed-header ant-table-scroll-position-left ant-table-large">
+                                                            <!---->
+                                                            <div class="ant-table-content">
+                                                                <div class="ant-table-scroll">
+                                                                    <!---->
+                                                                    <div class="ant-table-header ng-star-inserted" style="margin-bottom: -17px; padding-bottom: 0px;">
+                                                                        <table class="table">
+                                                                            <colgroup>
+                                                                                <!---->
+                                                                                <col style="width: 40px; min-width: 40px;" class="ng-star-inserted">
+                                                                                <col style="width: 0px; min-width: 0px;" class="ng-star-inserted">
+                                                                                <col style="width: 100px; min-width: 100px;" class="ng-star-inserted">
+                                                                                <col style="width: 60px; min-width: 60px;" class="ng-star-inserted">
+                                                                                <col style="width: 60px; min-width: 60px;" class="ng-star-inserted">
+                                                                                <col style="width: 50px; min-width: 50px;" class="ng-star-inserted">
+                                                                                <col style="width: 160px; min-width: 160px;" class="ng-star-inserted">
+                                                                                <col style="width: 30px; min-width: 30px;" class="ng-star-inserted">
+                                                                                <col style="width: 80px; min-width: 80px;" class="ng-star-inserted">
+                                                                                <col style="width: 80px; min-width: 80px;" class="ng-star-inserted">
+                                                                                <col style="width: 60px; min-width: 60px;" class="ng-star-inserted">
+                                                                            </colgroup>
+                                                                            <!---->
+                                                                            <thead _ngcontent-c48="" nz-thead="" class="ant-table-thead ng-star-inserted">
+                                                                                <tr _ngcontent-c48="">
+                                                                                    <!---->
+                                                                                    <th _ngcontent-c48="" nz-th="" nzwidth="40px" style="width: 40px;" class="ng-star-inserted">
+                                                                                        <!----><label _ngcontent-c48="" class="ng-star-inserted">&nbsp;</label>
+                                                                                        <!---->
+                                                                                    </th>
+                                                                                    <!---->
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">规格族</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">实例规格</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">vCPU</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">内存</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">处理器型号</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">处理器主频</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">内网带宽</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">内网收发包</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                    <th _ngcontent-c48="" nz-th="" class="th_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="" class="th_label ng-star-inserted">规格参考价格</span>
+                                                                                        <!---->
+                                                                                        <!---->
+                                                                                        <nz-table-sort _ngcontent-c48="" class="girdSort ng-star-inserted">
+                                                                                            <div class="ant-table-column-sorter">
+                                                                                                <span class="ant-table-column-sorter-up" title="↑">
+        <i class="anticon anticon-caret-up"></i>
+      </span>
+                                                                                                <span class="ant-table-column-sorter-down" title="↓">
+        <i class="anticon anticon-caret-down"></i>
+      </span>
+                                                                                            </div>
+                                                                                        </nz-table-sort>
+                                                                                        <!---->
+
+                                                                                    </th>
+                                                                                </tr>
+                                                                            </thead>
+
+                                                                        </table>
+                                                                    </div>
+                                                                    <div class="ant-table-body" style="max-height: 300px; overflow-y: scroll;">
+                                                                        <table class="table">
+                                                                            <colgroup>
+                                                                                <!---->
+                                                                                <col style="width: 40px; min-width: 40px;" class="ng-star-inserted">
+                                                                                <col style="width: 0px; min-width: 0px;" class="ng-star-inserted">
+                                                                                <col style="width: 100px; min-width: 100px;" class="ng-star-inserted">
+                                                                                <col style="width: 60px; min-width: 60px;" class="ng-star-inserted">
+                                                                                <col style="width: 60px; min-width: 60px;" class="ng-star-inserted">
+                                                                                <col style="width: 50px; min-width: 50px;" class="ng-star-inserted">
+                                                                                <col style="width: 160px; min-width: 160px;" class="ng-star-inserted">
+                                                                                <col style="width: 30px; min-width: 30px;" class="ng-star-inserted">
+                                                                                <col style="width: 80px; min-width: 80px;" class="ng-star-inserted">
+                                                                                <col style="width: 80px; min-width: 80px;" class="ng-star-inserted">
+                                                                                <col style="width: 60px; min-width: 60px;" class="ng-star-inserted">
+                                                                            </colgroup>
+
+
+                                                                            <!---->
+                                                                            <tbody _ngcontent-c48="" nz-tbody="" class="ant-table-tbody">
+                                                                                <!---->
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox ant-checkbox-checked">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;" data-spm-anchor-id="5176.ecsbuyv3.instance.i0.14083675hZSnHX">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.large</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">8 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">1 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">30 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">181.45</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">4 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">16 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">1.5 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">50 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">363.85</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.2xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">8 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">32 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">80 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">726.75</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!----><commonicon _nghost-c39="" class="ng-star-inserted">
+     <nz-tooltip _ngcontent-c39="" class="commonIcon ng-tns-c34-43">
+    
+          <span _ngcontent-c39="" nz-tooltip="" tabindex="0" class="buyIconfont icon-question"></span>
+                                                                                        <!---->
+
+                                                                                        <!---->
+                                                                                        </nz-tooltip>
+                                                                                        </commonicon>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.3xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">12 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">48 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">4 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">90 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">1090.6</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.4xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">16 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">64 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">5 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">100 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">1453.5</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.6xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">24 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">96 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">7.5 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">150 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">2180.25</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.8xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">32 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">128 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">10 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">200 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">2907.0</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr _ngcontent-c48="" nz-tbody-tr="" class="ant-table-row ng-star-inserted">
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="ng-star-inserted" style="width: 40px; text-align: center;">
+                                                                                        <label _ngcontent-c48="" nz-checkbox="" class="radioButton ng-untouched ng-pristine ng-valid">
+    <span class="ant-checkbox">
+      <span class="ant-checkbox-inner"></span>
+      <input type="checkbox" class="ant-checkbox-input ng-untouched ng-pristine ng-valid">
+    </span>
+    
+  </label>
+                                                                                    </td>
+                                                                                    <!---->
+                                                                                    <!---->
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l hidden ng-star-inserted" style="width: 0px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""></span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 100px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span>通用型 g5</span></span>
+
+                                                                                        <!----><span _ngcontent-c48="" class="ng-star-inserted">
+        <!---->
+      </span>
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">ecs.g5.16xlarge</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">64 vCPU</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 50px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">256 GiB</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 160px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">Intel Xeon(Skylake) Platinum 8163</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 30px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">2.5 GHz</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">20 Gbps</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 80px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48="">400 万 PPS</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                    <td _ngcontent-c48="" nz-td="" class="td_l ng-star-inserted" style="width: 60px;">
+                                                                                        <!---->
+                                                                                        <span _ngcontent-c48=""><span class="eb-color-warning">5814.0</span> 元/月</span>
+
+                                                                                        <!---->
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+
+                                                                        </table>
+                                                                    </div>
+                                                                    <!---->
+                                                                    <!---->
+                                                                    <!---->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <!---->
+                                                </div>
+
+                                            </nz-spin>
+                                        </div>
+                                    </nz-table>
+                                </advance-grid>
+                                <!---->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-brackets-id="12533" style="
+    align-items: center;
+    display: flex;
+    background-color: #f7f8fa;
+">
+                        <div data-brackets-id="12534" style="
+    flex-grow: 2;
+    padding-left: 20px;
+">
+                            <span data-brackets-id="12535">购买时长： </span>
+                            <select data-brackets-id="12536" style="
+    width: 41%;
+    font-size: 14px;
+    padding: 2px 10px;
+">
+            <option data-brackets-id="12537">1个月</option>
+            <option data-brackets-id="12538" selected>2个月</option>
+            <option data-brackets-id="12539">3个月</option>
+            <option data-brackets-id="12540">4个月</option>
+            <option data-brackets-id="12541">5个月</option>
+            <option data-brackets-id="12542">6个月</option>
+            </select>
+                        </div>
+                        <div data-brackets-id="12543" style="
+    flex-grow: 1;
+    align-items: center;
+    display: flex;
+">
+                            <span data-brackets-id="12544">配置费用：</span>
+                            <span data-brackets-id="12545" style="
+    font-size: 30px;
+    color: orange;
+">￥ 727.70 </span>
+                        </div>
+                        <div data-brackets-id="12546" style="
+    flex-grow: 33;
+">
+                            <span data-brackets-id="12547" style="
+    color: darkgreen;
+">省 ￥ 9.550   专有网络实例立享9.5折</span>
+                        </div>
+                        <div data-brackets-id="12548">
+                            <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end" style="background: none;display: block;">
+                                <div class="btn-group mr-2 sw-btn-group" role="group" style="float: right;">
+                                    <button id="orderBtn" class="btn btn-secondary sw-btn-next" type="button" style="background-color: orange;color: white;">确认订单</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step-2" class="tab-pane step-content">
+                    <h3 class="border-bottom border-gray pb-2">订单信息</h3>
+                    <div style="width: 45%;margin-top: 25px;">
+                        <div class="row">
+                            <div class="col-md-2">规格</div>
+                            <div class="col-md-10">通用型g5</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">实例规格</div>
+                            <div class="col-md-10">ecs.g5.large</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">vCPU</div>
+                            <div class="col-md-10"> 4 vCPU</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">内存</div>
+                            <div class="col-md-10">16 GiB</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">处理器型号</div>
+                            <div class="col-md-10">Intel Xeon(Skylake) Platinum 8163</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">处理器主频</div>
+                            <div class="col-md-10"> 2.5 GHz</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">内网带宽</div>
+                            <div class="col-md-10"> 1.5 Gbps</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">内网收发包</div>
+                            <div class="col-md-10"> 50 万 PPS</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">计费方式</div>
+                            <div class="col-md-10">包年包月</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">地域</div>
+                            <div class="col-md-10">随机分配</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">镜像</div>
+                            <div class="col-md-10">系统镜像</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">存储</div>
+                            <div class="col-md-10">系统盘40 GiB</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">购买时长</div>
+                            <div class="col-md-10">2个月</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-2">配置费用</div>
+                            <div class="col-md-10">￥ 727.70</div>
+                        </div>
+                    </div>
+                    <br>
+                    <h3 class="border-bottom border-gray pb-2">支付方式</h3>
+                    <div style="width: 45%;margin-top: 25px;display: inline-block;padding-bottom: 40px;">
+                        <button type="button" class="payWay" style="background:none;border:1px solid orangered;width:150px;color: orangered;">微信</button>
+                        <button type="button" class="payWay" style="background:none;border:1px solid #ccc;width:150px;">支付宝</button>
+                        <button type="button" class="payWay" style="background:none;border:1px solid #ccc;width:150px;">财付通</button>
+                        <button type="button" class="payWay" style="background:none;border:1px solid #ccc;width:150px;">银联</button>
+                        <br>
+                        <br>
+                        <div style="text-align: left;padding-left:50px;color: #373737;">支付金额</div>
+                        <div style="font-size: 25px;color: orange;text-align: left;padding-left:20px;">￥727.70</div>
+                        <div style="text-align: right;padding-right: 50px;">
+                            <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end" style="background: none;display: block;">
+                                <div class="btn-group mr-2 sw-btn-group" role="group">
+                                    <button class="btn btn-secondary sw-btn-next" type="button" style="background-color: orange;color: white;padding: 8px 40px;">确定</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 52%;display: inline-block;text-align: center;position: absolute;top: 20%;" data-brackets-id="11733">
+                        <p>请扫描下方二维码支付</p>
+                        <img src="images/qr_hd.png" id="qrCodeImg" style="width:350px;" />
+                    </div>
+                    <!--                    <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end"><div class="btn-group mr-2 sw-btn-group" role="group"><button class="btn btn-secondary sw-btn-prev" type="button">Previous</button><button class="btn btn-secondary sw-btn-next" type="button">Next</button></div></div>-->
+                </div>
+                <div id="step-3" class="tab-pane step-content">
+                    <div data-brackets-id="14158" style="
+    text-align: center;
+    padding-top: 10%;
+    min-height: 740px;
+">
+                        <img data-brackets-id="14159" src="images/wx_pay_success.png">
+                        <br><br>
+                        <p>您的订单支付成功！</p>
+                        <div class="btn-toolbar sw-toolbar sw-toolbar-bottom justify-content-end" style="background: none;display: block;">
+                            <div class="btn-group mr-2 sw-btn-group" role="group" style="float: none;margin-top: 20px;">
+                                <button class="btn btn-secondary sw-btn-next" type="button" style="background-color: orange;color: white;padding: 8px 40px;">生成场景</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step-4" class="tab-pane step-content">
+                    <div class="card">
+                        <div class="head-warp">
+                            <div class="head">
+                                <div class="nav-box">
+                                    <ul>
+                                        <li class="cur" style="text-align:center; font-size:62px; font-family:'微软雅黑', '宋体';">场景时间轴</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main" style="margin-left: 37%;">
+                            <div class="history">
+                                <div class="history-date">
+                                    <ul>
+                                        <h2 class="first"><a href="#nogo">2012年</a></h2>
+
+
+                                        <li class="green">
+                                            <h3>10.08<span>2012</span></h3>
+                                            <dl>
+                                                <dt>发布全新的极速浏览器6.0版本
+	<span>升级极速内核到21.0；全新默认界面；新增小窗口播放功能</span>
+	</dt>
+                                            </dl>
+                                        </li>
+
+                                        <li>
+                                            <h3>07.19<span>2012</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到20.0
+	<span>HTML5支持度全球最好，达到469分，测试页面： </span>
+	</dt>
+                                            </dl>
+                                        </li>
+
+                                        <li>
+                                            <h3>07.02<span>2012</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到19.0
+	<span>支持网络摄像头，浏览器可直接访问摄像头</span>
+	</dt>
+                                            </dl>
+                                        </li>
+
+                                        <li class="green">
+                                            <h3>06.27<span>2012</span></h3>
+                                            <dl>
+                                                <dt>发布国内首个HTML5实验室
+	<span>大力推广HTML5</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>06.15<span>2012</span></h3>
+                                            <dl>
+                                                <dt>新增了下载文件前扫描下载链接安全性的功能</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>06.05<span>2012</span></h3>
+                                            <dl>
+                                                <dt>W3C联盟首席执行官访华，首站访问360公司
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>05.12<span>2012</span></h3>
+                                            <dl>
+                                                <dt>360受邀出席W3C联盟成员见面会议</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>05.11<span>2012</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到18.0
+	<span>新增多用户使用浏览器的功能</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>05.03<span>2012</span></h3>
+                                            <dl>
+                                                <dt>360极速浏览器用户数突破5000万，活跃用户超2000万
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>03.08<span>2012</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到17.0，提升浏览器速度、增强安全性
+	<span>新增HTTP管线化技术，大幅提升网页加载速度</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>01.29<span>2012</span></h3>
+                                            <dl>
+                                                <dt>国内率先加入W3C联盟HTML工作组，参与HTML5标准制定
+	</dt>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="history-date">
+                                    <ul>
+                                        <h2 class="date02"><a href="#nogo">2011年</a></h2>
+                                        <li>
+                                            <h3>12.12<span>2011</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到16.0，提升浏览器速度、增强安全性
+	<span>新增对360网购保镖支持，保护网上交易安全</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li class="green">
+                                            <h3>11.24<span>2011</span></h3>
+                                            <dl>
+                                                <dt>发布国内首个双核浏览器实验室
+	<span>轻松测试浏览器性能</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>11.01<span>2011</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到15.0
+	<span>提升浏览器速度、增强安全性</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>10.27<span>2011</span></h3>
+                                            <dl>
+                                                <dt>作为国内唯一受邀参展的浏览器厂商，参展2011谷歌开发者日大会
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>09.22<span>2011</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到14.0
+	<span>加入Canvas 2D的GPU加速等特性</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>09.21<span>2011</span></h3>
+                                            <dl>
+                                                <dt>360极速浏览器用户量超千万，宣布与Chromium社区版本同步
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>08.30<span>2011</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到13.0
+	<span>新增更丰富的皮肤自定义支持</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>06.22<span>2011</span></h3>
+                                            <dl>
+                                                <dt>新增对crx格式的关联
+	<span>双击crx文件即可安装扩展、皮肤</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>05.19<span>2011</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到10.0
+	<span>极速浏览器与安全浏览器网络收藏夹互通</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>04.07<span>2011</span></h3>
+                                            <dl>
+                                                <dt>推出应用开放平台，与开发者共享用户资源
+	</dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>03.27<span>2011</span></h3>
+                                            <dl>
+                                                <dt>新增360云安全网址拦截
+	<span>新增IE9高速模式，支持GPU硬件加速</span>
+	</dt>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="history-date">
+                                    <ul>
+                                        <h2 class="date02"><a href="#nogo">2010年</a></h2>
+                                        <li>
+                                            <h3>12.13<span>2010</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到7.0<span>提升浏览器速度、增强安全性</span></dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>10.20<span>2010</span></h3>
+                                            <dl>
+                                                <dt>升级极速内核到6.0<span>新增360帐户，同步网络收藏夹</span></dt>
+                                            </dl>
+                                        </li>
+                                        <li>
+                                            <h3>09.15<span>2010</span></h3>
+                                            <dl>
+                                                <dt>首款双核安全浏览器 - 360极速浏览器发布
+	<span>首个包含沙箱、系统级防注入、完整多进程隔离架构等安全机制的双核浏览器<br><br></span>
+	</dt>
+                                                <br><br><br><br>
+                                            </dl>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <!-- Overlay Modal  -->
+    <div class="modal fade" id="projectModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">支付订单</h4>
+                </div>
+                <div class="modal-body">
+                    <!-- <h4>New home display </h4> -->
+                    <p>请选择支付方式</p>
+                    <p data-brackets-id="20876" style="
+    display: flex;
+    justify-content: space-evenly;
+"><span class="payWay" style="
+    border: 1px solid orangered;
+    padding: 2px 25px;
+    color: orangered;
+    font-weight: bold;
+">微信支付</span>
+                        <span class="payWay" style="
+    border: 1px solid #ccc;
+    padding: 2px 25px;
+    color: gray;
+">支付宝支付</span></p>
+                    <div class="wxPay" style="display: flex;justify-content: space-evenly;">
+                        <img src="images/qr.png" />
+                        <div style="text-align: center;">
+                            请扫描二维码支付
+                            <br>
+                            <br>
+                            <img data-brackets-id="22505" src="images/wx_logo.jpg" style="width: 50px;height: 50px;">
+                        </div>
+                    </div>
+                    <div class="aliPay" style="display: flex;justify-content: space-evenly;display: none;">
+                        <img data-brackets-id="36101" src="images/qr2.png" style="width: 115px;height: 115px;">
+                        <div style="text-align: center;">
+                            请扫描二维码支付
+                            <br>
+                            <br>
+                            <img data-brackets-id="22505" src="images/ali_logo.jpg" style="width: 50px;height: 50px;">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+
+    <!-- Custom js -->
+    <!--    <script src="js/custom.js"></script>-->
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.smartWizard.js"></script>
+    <script src="timeline/js/main.js"></script>
+
+    <!-- Portfolio Filters -->
+    <!--    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>-->
+</body>
+
+</html>

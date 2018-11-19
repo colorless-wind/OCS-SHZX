@@ -1,0 +1,451 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OCS</title>
+    <!-- Favicon Icon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Ion Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <style>
+        .navbar-header {
+            font-size: 30px;
+        }
+
+        .navbar-header i {
+            margin-right: 10px;
+        }
+
+        .team-item-name {
+            font-size: 30px;
+        }
+
+        .team-item:hover .team-item-image::after {
+            background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+        }
+
+        .team-item-image .icon {
+            width: 50%;
+        }
+
+        .team-item-image .detail-btn {
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            top: 60px;
+        }
+
+        .menu-modal p {
+            color: white;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        .menu-modal h2 {
+            font-weight: bold;
+        }
+
+
+        #left a {
+            color: lightblue;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            margin: 0;
+        }
+    </style>
+    <script>
+        function closeMenuModal() {
+            $('.menu-modal').hide();
+        }
+
+        $(function() {
+            $('section').on('click ', function() {
+                closeMenuModal();
+            })
+        })
+    </script>
+</head>
+
+<body style="background-color: #000;">
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top menu-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <i class="fa fa-bars"></i><span>控制台</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-brackets-id="2570" class="page-scroll" style="color: black;"><input data-brackets-id="2571" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+"><i data-brackets-id="2572" class="fa fa-search" style="
+    /* position: absolute; */
+    margin-left: -20px;
+    color: gray;
+"></i></a></li>
+                        <li><a class="page-scroll">购物车</a></li>
+                        <li><a class="page-scroll">支持与服务</a></li>
+                        <li><a class="page-scroll loginUser"><img src="images/logo.png"/></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+
+
+    <div data-brackets-id="4581" id="left" style="
+    position: absolute;
+    top: 66px;
+    width: 190px;
+    padding-left: 55px;
+    display: inline-block;
+    background-color: #44444487;
+    height: 900px;
+">
+        <!-- #menu -->
+        <ul data-brackets-id="4582" id="menu" class="bg-blue dker" style="
+    line-height: 2.5;
+">
+            <li data-brackets-id="4583" class="nav-header" style="
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+">Menu</li>
+            <li data-brackets-id="4584" class="nav-divider"></li>
+            <li data-brackets-id="4585" class="">
+                <a data-brackets-id="4586" href="javascript:;">
+                                      <i data-brackets-id="4587" class="fa fa-credit-card "></i>
+                                      <span data-brackets-id="4588" class="link-title">朋安易</span>
+                                      <span data-brackets-id="4589" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4590" class="collapse">
+                    <li data-brackets-id="4591">
+                        <a data-brackets-id="4592" href="test3.html">
+                                <span data-brackets-id="4593" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4594">
+                        <a data-brackets-id="4595" href="test4.html">
+                                <span data-brackets-id="4596" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-brackets-id="4597" class="">
+                <a data-brackets-id="4598" href="javascript:;">
+                                      <i data-brackets-id="4599" class="fa fa-credit-card "></i>
+                                      <span data-brackets-id="4600" class="link-title">园区卡</span>
+                                      <span data-brackets-id="4601" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4602" class="collapse">
+                    <li data-brackets-id="4603">
+                        <a data-brackets-id="4604" href="test3.html">
+                                <span data-brackets-id="4605" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4606">
+                        <a data-brackets-id="4607" href="test4.html">
+                                <span data-brackets-id="4608" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-brackets-id="4609" class="">
+                <a data-brackets-id="4610" href="javascript:;">
+                                      <i data-brackets-id="4611" class="fa fa-credit-card "></i>
+                                      <span data-brackets-id="4612" class="link-title">旅游卡</span>
+                                      <span data-brackets-id="4613" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4614" class="collapse">
+                    <li data-brackets-id="4615">
+                        <a data-brackets-id="4616" href="test3.html">
+                                <span data-brackets-id="4617" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4618">
+                        <a data-brackets-id="4619" href="test4.html">
+                                <span data-brackets-id="4620" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-brackets-id="4609" class="">
+                <a data-brackets-id="4610" href="javascript:;">
+                                      <i data-brackets-id="4611" class="fa fa-database "></i>
+                                      <span data-brackets-id="4612" class="link-title">数据控制台</span>
+                                      <span data-brackets-id="4613" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4614" class="collapse">
+                    <li data-brackets-id="4615">
+                        <a data-brackets-id="4616" href="test3.html">
+                                <span data-brackets-id="4617" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4618">
+                        <a data-brackets-id="4619" href="test4.html">
+                                <span data-brackets-id="4620" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-brackets-id="4609" class="">
+                <a data-brackets-id="4610" href="javascript:;">
+                                      <i data-brackets-id="4611" class="fa fa-map-marker  "></i>
+                                      <span data-brackets-id="4612" class="link-title">&nbsp;域名</span>
+                                      <span data-brackets-id="4613" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4614" class="collapse">
+                    <li data-brackets-id="4615">
+                        <a data-brackets-id="4616" href="test3.html">
+                                <span data-brackets-id="4617" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4618">
+                        <a data-brackets-id="4619" href="test4.html">
+                                <span data-brackets-id="4620" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-brackets-id="4609" class="">
+                <a data-brackets-id="4610" href="javascript:;">
+                                      <i data-brackets-id="4611" class="fa fa-building "></i>
+                                      <span data-brackets-id="4612" class="link-title">工单</span>
+                                      <span data-brackets-id="4613" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4614" class="collapse">
+                    <li data-brackets-id="4615">
+                        <a data-brackets-id="4616" href="test3.html">
+                                <span data-brackets-id="4617" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4618">
+                        <a data-brackets-id="4619" href="test4.html">
+                                <span data-brackets-id="4620" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+            <li data-brackets-id="4609" class="">
+                <a data-brackets-id="4610" href="javascript:;">
+                                      <i data-brackets-id="4611" class="fa fa-gear "></i>
+                                      <span data-brackets-id="4612" class="link-title">设置</span>
+                                      <span data-brackets-id="4613" class="fa arrow"></span>
+                                    </a>
+                <ul data-brackets-id="4614" class="collapse">
+                    <li data-brackets-id="4615">
+                        <a data-brackets-id="4616" href="test3.html">
+                                <span data-brackets-id="4617" class="link-title">&nbsp; 鐢ㄦ埛绠＄悊</span></a>
+                    </li>
+                    <li data-brackets-id="4618">
+                        <a data-brackets-id="4619" href="test4.html">
+                                <span data-brackets-id="4620" class="link-title">&nbsp; 鐗堟湰绠＄悊</span></a>
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+        <!-- /#menu -->
+    </div>
+
+    <!-- Slider -->
+    <section data-brackets-id="4621" id="home11" class="welcome-area" style="background-color: #e3e3e3;display: inline-block;width: calc(100% - 200px);position: absolute;left: 190px;top: 66px;height: 900px;padding: 10px;">
+        <div class="row">
+            <div class="col-md-6 card-box" style="background-color: white;padding: 10px 15px;">
+                <div class="row">
+                    <h2 style="display:inline-block;width:60%;margin-left: 20px;">安全预警</h2>
+                    <div class="col-md-8">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-md-4" style="padding: 5px;">
+                                <div style="background-color:#f3f3f3;line-height:45px;">
+                                    <br>
+                                    <span style="font-size:30px;">0</span>
+                                    <p>紧急事件</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding: 5px;">
+                                <div style="background-color:#f3f3f3;line-height:45px;">
+                                    <br>
+                                    <span style="font-size:30px;">0</span>
+                                    <p>漏洞</p>
+                                </div>
+                            </div>
+                            <div class="col-md-4" style="padding: 5px;">
+                                <div style="background-color:#f3f3f3;line-height:45px;">
+                                    <br>
+                                    <span style="font-size:30px;">0</span>
+                                    <p>攻击</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 style="display:inline-block;width:29%;margin-left: 20px;">安全预警</h2>
+                    <div class="col-md-4" data-brackets-id="5651" style="padding: 0;">
+                        <div class="row" style="background-color: #f3f3f3;line-height: 55px;margin-top: 5px;padding-left: 15px;" data-brackets-id="5717">
+                            <div class="col-md-6" style="padding: 5px;" data-brackets-id="5718">
+                                主机安全
+                            </div>
+                            <div class="col-md-6" style="padding: 5px;" data-brackets-id="5720">
+                                0 件
+                            </div>
+                        </div>
+                        <div class="row" style="background-color:#f3f3f3;line-height: 55px;margin-top: 10px;padding-left: 15px;" data-brackets-id="5700">
+                            <div class="col-md-12" style="padding: 5px;" data-brackets-id="5701">
+                                web攻击 购买网络WAF
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<div data-brackets-id="6287" class="col-md-3 card-box" style="padding: 0;padding-left: 15px;">
+                <div data-brackets-id="6288" style="background-color: white;padding-bottom: 1px;">
+                    <h2 data-brackets-id="6289" style="
+    padding: 10px 15px;
+    margin: 0;
+">待办事项</h2>
+                    <div data-brackets-id="6290" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6291" class="col-md-6" style="padding-left:35px;">工单</div>
+                        <div data-brackets-id="6292" class="col-md-6">0</div>
+                    </div>
+                    <div data-brackets-id="6293" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6294" class="col-md-6" style="padding-left:35px;">续费</div>
+                        <div data-brackets-id="6295" class="col-md-6">0</div>
+                    </div>
+                    <div data-brackets-id="6296" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    /* margin-bottom: 7px; */
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6297" class="col-md-6" style="padding-left:35px;">未支付订单</div>
+                        <div data-brackets-id="6298" class="col-md-6">0</div>
+                    </div>
+                </div>
+            </div><div data-brackets-id="6287" class="col-md-3" style="padding: 0;padding-left: 15px;">
+                <div data-brackets-id="6288" style="background-color: white;padding-bottom: 1px;">
+                    <h2 data-brackets-id="6289" style="
+    padding: 10px 15px;
+    margin: 0;
+">待办事项</h2>
+                    <div data-brackets-id="6290" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6291" class="col-md-6" style="padding-left:35px;">工单</div>
+                        <div data-brackets-id="6292" class="col-md-6">0</div>
+                    </div>
+                    <div data-brackets-id="6293" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6294" class="col-md-6" style="padding-left:35px;">续费</div>
+                        <div data-brackets-id="6295" class="col-md-6">0</div>
+                    </div>
+                    <div data-brackets-id="6296" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    /* margin-bottom: 7px; */
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6297" class="col-md-6" style="padding-left:35px;">未支付订单</div>
+                        <div data-brackets-id="6298" class="col-md-6">0</div>
+                    </div>
+                </div>
+            </div>        </div>
+        <div class="row" style="margin-top: 15px;">
+        <div class="col-md-9" style="padding:0;">
+            <div data-brackets-id="6288" style="background-color: white;padding-bottom: 1px;">
+                    <h2 data-brackets-id="6289" style="
+    padding: 10px 15px;
+    margin: 0;
+">待办事项</h2>
+                    <div data-brackets-id="6290" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6291" class="col-md-6" style="padding-left:35px;">工单</div>
+                        <div data-brackets-id="6292" class="col-md-6">0</div>
+                    </div>
+                    <div data-brackets-id="6293" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6294" class="col-md-6" style="padding-left:35px;">续费</div>
+                        <div data-brackets-id="6295" class="col-md-6">0</div>
+                    </div>
+                    <div data-brackets-id="6296" class="row" style="
+    line-height: 45px;
+    margin: 10px;
+    /* margin-bottom: 7px; */
+    background-color: #f3f3f3;
+">
+                        <div data-brackets-id="6297" class="col-md-6" style="padding-left:35px;">未支付订单</div>
+                        <div data-brackets-id="6298" class="col-md-6">0</div>
+                    </div>
+                </div>
+            </div>
+        <div class="col-md-3" style="padding:0;"></div>
+        </div>
+    </section>
+    <!-- End Slider -->
+    <!-- End Footer -->
+    <!-- Footer Bottom -->
+    <div data-brackets-id="4622" class="footer-bottom" style="
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+">
+        <div data-brackets-id="4623" class="container">
+            <div data-brackets-id="4624" class="row">
+                <div data-brackets-id="4625" class="col-sm-12 text-center">
+                    <div data-brackets-id="4626" class="text-center">©金邦达集团 版权所有 1998-2018 粤ICP备06089952号-1 粤公网安备 44040202000557号 | 法律声明</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Bottom -->
+
+    <!-- Custom js -->
+    <script src="js/custom.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Portfolio Filters -->
+    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OCS</title>
+    <!-- Favicon Icon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" >-->
+
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Ion Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <!-- smart_wizard -->
+    <link href="css/smart_wizard.min.css" rel="stylesheet" type="text/css">
+    <link href="css/smart_wizard_theme_circles.css" rel="stylesheet" type="text/css">
+
+    <link href="timeline/css/history.css" rel="stylesheet" />
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <style>
+        .navbar-header {
+            font-size: 30px;
+        }
+
+        .navbar-header i {
+            margin-right: 10px;
+        }
+
+        .team-item-name {
+            font-size: 30px;
+        }
+
+        .team-item:hover .team-item-image::after {
+            background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+        }
+
+        .team-item-image .icon {
+            width: 50%;
+        }
+
+        .team-item-image .detail-btn {
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            top: 60px;
+        }
+
+        .menu-modal p {
+            color: white;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        .menu-modal h2 {
+            font-weight: bold;
+        }
+
+
+
+
+        .panel {
+            margin-bottom: 15px;
+        }
+
+        .panel-warning>.panel-heading {
+            color: black;
+            background-color: white;
+            border-color: #ffc599;
+            padding: 0px 15px;
+            font-weight: bold;
+            /*            text-shadow: -1px 1px 1px grey;*/
+        }
+
+        .panel-success>.panel-heading {
+            color: black;
+            font-weight: bold;
+        }
+
+        .sw-theme-default>ul.step-anchor>li {
+            width: 24.8%;
+        }
+
+        .btn-toolbar.sw-toolbar {
+            display: none;
+        }
+
+    </style>
+    <script>
+        $(function() {
+
+
+        })
+
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top menu-top" style="background-color: black;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <i class="fa fa-bars" onclick="javascript:location.href='index.html';"></i><span onclick="javascript:location.href='index.html';">OCS</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-brackets-id="2570" class="page-scroll" style="color: black;"><input data-brackets-id="2571" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+"><i data-brackets-id="2572" class="fa fa-search" style="
+    /* position: absolute; */
+    margin-left: -20px;
+    color: gray;
+"></i></a></li>
+                        <li><a class="page-scroll">购物车</a></li>
+                        <li><a class="page-scroll">工单</a></li>
+                        <li><a class="page-scroll">费用</a></li>
+                        <li><a class="page-scroll" href="main.html">控制台</a></li>
+                        <li><a class="page-scroll loginUser"><img src="images/logo.png" /></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid" style="margin-top: 66px;">
+        <div style="background-color: white;margin-top: 10px;padding: 10px;">
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">已完成订单</a></li>
+                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">未完成订单</a></li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="home">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"> </th>
+                                <th scope="col">订单号</th>
+                                <th scope="col">订单金额</th>
+                                <th scope="col">购买服务</th>
+                                <th scope="col">下单时间</th>
+                                <th scope="col">订单状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>181105135492622741</td>
+                                <td>363.85元</td>
+                                <td>通用型c5 | 4 vCPU | Intel Xeon(Skylake) Platinum 8163 2.5 GHz | 带宽 1.5 Gbps | 包年包月 | 随机地域 | 系统镜像 | 系统盘40 GiB | 时长1个月</td>
+                                <td>2018-11-05 00:20:52</td>
+                                <td>已完成</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td>180803466163322054</td>
+                                <td>181.00元</td>
+                                <td>通用型c5 | 2 vCPU | Intel Xeon(Skylake) Platinum 8163 2.5 GHz | 带宽 1.0 Gbps | 包年包月 | 随机地域 | 系统镜像 | 系统盘20 GiB | 时长2个月</td>
+                                <td>2018-08-03 01:05:23</td>
+                                <td>已完成</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">3</th>
+                                <td>180429884942322451</td>
+                                <td>50.00元</td>
+                                <td>通用型c5 | 2 vCPU | Intel Xeon(Skylake) Platinum 8163 2.5 GHz | 带宽 1.0 Gbps | 包年包月 | 随机地域 | 系统镜像 | 系统盘20 GiB | 时长1个月</td>
+                                <td>2016-12-14 00:26:11</td>
+                                <td>已完成</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div role="tabpanel" class="tab-pane" id="profile">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col"> </th>
+                                <th scope="col">订单号</th>
+                                <th scope="col">订单金额</th>
+                                <th scope="col">购买服务</th>
+                                <th scope="col">下单时间</th>
+                                <th scope="col">订单状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>181105135492622741</td>
+                                <td>727.70元</td>
+                                <td>通用型c5 | 4 vCPU | Intel Xeon(Skylake) Platinum 8163 2.5 GHz | 带宽 1.5 Gbps | 包年包月 | 随机地域 | 系统镜像 | 系统盘40 GiB | 时长2个月</td>
+                                <td>2018-11-05 00:20:52</td>
+                                <td>待付款 | <a href="makeOrder.html#step-2" style="cursor: pointer;">立即付款</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- Custom js -->
+    <!--    <script src="js/custom.js"></script>-->
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Portfolio Filters -->
+    <!--    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>-->
+</body>
+
+</html>

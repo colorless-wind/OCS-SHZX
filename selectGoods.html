@@ -1,0 +1,743 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>OCS</title>
+    <!-- Favicon Icon -->
+    <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png">
+    <link rel="icon" type="image/png" href="images/favicon.ico">
+    <!-- Bootstrap CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:regular,700,600&amp;latin" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Oswald:300,400,700" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Ion Icons -->
+    <link href="css/ionicons.min.css" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <style>
+        .navbar-header {
+            font-size: 30px;
+        }
+
+        .navbar-header i {
+            margin-right: 10px;
+        }
+
+        .team-item-name {
+            font-size: 30px;
+        }
+
+        .team-item:hover .team-item-image::after {
+            background: rgba(0, 0, 0, 0.6) none repeat scroll 0 0;
+        }
+
+        .team-item-image .icon {
+            width: 50%;
+        }
+
+        .team-item-image .detail-btn {
+            border: 1px solid white;
+            color: white;
+            padding: 10px 20px;
+            position: relative;
+            top: 60px;
+        }
+
+        .menu-modal p {
+            color: white;
+            text-shadow: 2px 2px 2px #000;
+        }
+
+        .menu-modal h2 {
+            font-weight: bold;
+        }
+
+
+
+
+
+        .hero-clouds {
+            background: rgba(0, 0, 0, 0) url(images/slider/slide4.jpg) repeat-x scroll 1050% 0%
+        }
+
+        .welcome-area,
+        .welcome-slider-area,
+        .welcome-slider-area div {
+            height: 600px;
+        }
+
+        #goodsType .portfolio {
+            width: 100%;
+        }
+
+    </style>
+    <script>
+        function openMenuModal(type) {
+            $('.menu-modal').hide();
+            switch (type) {
+                case 'service':
+                    $('.menunav').after($('.serviceModal'));
+                    $('.serviceModal').show();
+                    break;
+                case 'activity':
+                    $('.menunav').after($('.activityModal'));
+                    $('.activityModal').show();
+                    break;
+                case 'solution':
+                    $('.menunav').after($('.solutionModal'));
+                    $('.solutionModal').show();
+                    break;
+                case 'partner':
+                    $('.menunav').after($('.partnerModal'));
+                    $('.partnerModal').show();
+                    break;
+            }
+        }
+
+        function closeMenuModal() {
+            $('.menu-modal').hide();
+        }
+
+        $(function() {
+            $('section').on('click ', function() {
+                closeMenuModal();
+            })
+        })
+
+    </script>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar navbar-default navbar-fixed-top menu-top">
+        <div class="container">
+            <div class="navbar-header">
+                <i class="fa fa-bars" onclick="javascript:location.href='index.html';"></i><span onclick="javascript:location.href='index.html';">OCS</span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a data-brackets-id="2570" class="page-scroll" style="color: black;"><input data-brackets-id="2571" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+"><i data-brackets-id="2572" class="fa fa-search" style="
+    /* position: absolute; */
+    margin-left: -20px;
+    color: gray;
+"></i></a></li>
+                        <li><a class="page-scroll">购物车</a></li>
+                        <li><a class="page-scroll" href="orderList.html" >订单</a></li>
+                        <li><a class="page-scroll loginUser">登录</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="navbar-collapse collapse">
+                <nav style="position: relative;">
+                    <ul class="nav navbar-nav menunav">
+                        <li><a class="page-scroll active" href="#home">主页</a></li>
+                        <li><a class="page-scroll" href="#work-process">工作流程</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('service')" href="#service">产品与服务</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('activity')" href="#portfolio">最新活动</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('solution')" href="#team">解决方案</a></li>
+                        <li><a class="page-scroll" onmouseover="openMenuModal('partner')" href="#blog">合作伙伴</a></li>
+                        <li><a data-brackets-id="3223" class="page-scroll" href="login.html#r" style="
+    color: #2196F3;
+    font-weight: bold;
+">免费注册</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Navbar -->
+    <!-- Slider -->
+    <section id="home" class="welcome-area">
+        <div class="welcome-slider-area">
+            <div id="welcome-slide-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active">
+                        <div class="single-slide-item slide-1">
+                            <div class="hero-clouds"></div>
+                            <div class="single-slide-item-table">
+                                <div class="single-slide-item-tablecell">
+                                    <div class="container">
+                                        <div data-brackets-id="7158" class="row">
+                                            <div data-brackets-id="7159" class="col-md-12">
+                                                <h2 data-brackets-id="7160" style="
+    text-align: left;
+">朋安易</h2>
+                                                <p data-brackets-id="7161" style="
+    width: 50%;
+    margin: 0;
+    text-align: left;
+    text-indent: 24px;
+    margin-bottom: 40px;
+">朋安易支付系统”为用户提供一种既便捷又安全的支付方式，以电子货币为支付介质，以智能安全设备为保障，既能满足用户方便快捷的支付需求，又能提供芯片级的安全保护，并且覆盖C2C、B2C、O2O等支付方式。</p>
+                                                <a data-brackets-id="7162" class="btn btn-lg btn-custom" style="
+    float: left;
+    margin-left: 10px;
+    background-color: #00c1de;
+    border: none;
+" onclick="shoppingNow(event)">立即购买</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Slider -->
+
+    <!-- Our Portfolio -->
+    <section id="portfolio" class="our_portfolio section-padding">
+        <div class="container">
+            <div class="row text-center">
+                <div class="section-title text-center">
+                    <h2 class="section-title-white">丰富的实例类型</h2>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <ul id="filters" class="clearfix">
+                <li><span class="filter active" data-filter=".app">入门级</span></li>
+                <li><span class="filter" data-filter=".icon">企业级</span></li>
+            </ul>
+            <div id="goodsType">
+                <div class="portfolio app" data-cat="app">
+                    <div class="portfolio-wrapper">
+                        <div class="row" style="width: 50%;margin: 0 auto;">
+                            <div class="col-md-6" style="text-align: center;">
+                                <div class="delivery-components" style="background-color: white;padding: 25px;">
+                                    <div class="ecs-entry-level">
+                                        <h2 class="ecs-entry-level-title">突发性能实例 t5</h2>
+                                        <div class="ecs-entry-level-sub-title">低负载应用 | 微服务 <br>10%基准CPU计算性能</div>
+                                        <div class="ecs-pro-introduce">
+                                            <div class="ecs-pro-introduce-detail"><span>实例</span>
+                                                <h2>1核2G</h2>
+                                            </div>
+                                            <div class="ecs-pro-introduce-detail"><span>高效云盘</span>
+                                                <h2>40GB</h2>
+                                            </div>
+                                            <div class="ecs-pro-introduce-detail"><span>带宽</span>
+                                                <h2>1M</h2>
+                                            </div>
+                                        </div>
+                                        <div class="ecs-entry-level-price"><span>￥809.40/年</span> 起 </div><a><button type="button" class="aps-ani-transition aps-widget aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-btn aps-btn-primary aps-size-large btn" style="width: 100%; font-size: 14px; font-weight: 200; margin-top: 20px;" onclick="shoppingNow(event)">立即购买</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6" style="text-align: center;">
+                                <div class="delivery-components" style="background-color: white;padding: 25px;">
+                                    <div class="ecs-entry-level">
+                                        <h2 class="ecs-entry-level-title">轻量应用服务器</h2>
+                                        <div class="ecs-entry-level-sub-title">轻量应用服务 | 建站<br>每月大额流量包，速度更快</div>
+                                        <div class="ecs-pro-introduce">
+                                            <div class="ecs-pro-introduce-detail"><span>实例</span>
+                                                <h2>1核1G</h2>
+                                            </div>
+                                            <div class="ecs-pro-introduce-detail"><span>SSD盘</span>
+                                                <h2>40GB</h2>
+                                            </div>
+                                            <div class="ecs-pro-introduce-detail"><span>峰值带宽</span>
+                                                <h2>3M</h2>
+                                            </div>
+                                        </div>
+                                        <div class="ecs-entry-level-price"><span>￥570.00/年</span> 起 </div><a><button type="button" class="aps-ani-transition aps-widget aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-btn aps-btn-primary aps-size-large btn" style="width: 100%; font-size: 14px; font-weight: 200; margin-top: 20px;" onclick="shoppingNow(event)">立即购买</button></a></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="portfolio icon" data-cat="icon">
+                    <div class="portfolio-wrapper">
+                        <div class="delivery-components" style="background-color: white;padding: 15px 25px;width: 70%;margin: 0 auto;margin-bottom: 20px;">
+                            <div class="ecs-enterprise" style="display: flex;justify-content: space-around;">
+                                <div class="ecs-enterprise-fir">
+                                    <div class="ecs-label">最新一代</div>
+                                    <div class="fir-line">
+                                        <h2>通用型 g5</h2>
+                                    </div>
+                                    <div class="ecs-desc">高网络包收发场景，如视频弹幕、电信业务转发等</div>
+                                    <div class="ecs-scene">场景:
+                                        <ul>
+                                            <li>高网络包收发场景，如视频弹幕、电信业务转发等</li>
+                                            <li>各种类型和规模的企业级应用</li>
+                                            <li>中小型数据库系统、缓存、搜索集群</li>
+                                            <li>数据分析和计算</li>
+                                            <li>计算集群、依赖内存的数据处理</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ecs-enterprise-sec">
+                                    <div class="ecs-detail-info fir">
+                                        <h2>CPU内存比</h2>
+                                        <div>1:4</div>
+                                    </div>
+                                    <div class="ecs-detail-info sec">
+                                        <h2>CPU类型</h2>
+                                        <div>Intel Skylake Xeon Platinum 8163 2.5GHz</div>
+                                    </div>
+                                    <div class="ecs-detail-info thr">
+                                        <h2>最大内网带宽</h2>
+                                        <div>20 Gbps</div>
+                                    </div>
+                                    <div class="ecs-detail-info fou">
+                                        <h2>最大网络收发包能力</h2>
+                                        <div>400万PPS</div>
+                                    </div>
+                                </div>
+                                <div class="ecs-enterprise-thr">
+                                    <div class="ecs-pro-select"><span>地域</span>
+                                        <div value="cn-zhangjiakou-na62-a01" class="aps-widget aps-select aps-select-md" style="width: 170px;">
+                                            <div class="aps-selection aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-selected-close">
+                                                <div class="aps-selected-value">华北 3</div><i type="arrow-down" class="aps-icon aps-ani-transition aps-widget aps-icon-arrow-down aps-select-arrow aps-ani-transition"></i></div><span class="aps-state-hidden"></span><span class="aps-state-hidden"></span></div>
+                                    </div>
+                                    <div class="ecs-pro-select"><span>CPU内存</span>
+                                        <div value="ecs.g5.large" class="aps-widget aps-select aps-select-md" style="width: 170px;">
+                                            <div class="aps-selection aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-selected-close">
+                                                <div class="aps-selected-value">2核 8GB</div><i type="arrow-down" class="aps-icon aps-ani-transition aps-widget aps-icon-arrow-down aps-select-arrow aps-ani-transition"></i></div><span class="aps-state-hidden"></span><span class="aps-state-hidden"></span></div>
+                                    </div>
+                                    <div class="ecs-pro-select"><span>购买时长</span>
+                                        <div value="1:year" class="aps-widget aps-select aps-select-md" style="width: 170px;">
+                                            <div class="aps-selection aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-selected-close">
+                                                <div class="aps-selected-value">1 年</div><i type="arrow-down" class="aps-icon aps-ani-transition aps-widget aps-icon-arrow-down aps-select-arrow aps-ani-transition"></i></div><span class="aps-state-hidden"></span><span class="aps-state-hidden"></span></div>
+                                    </div>
+                                    <div class="ecs-price"><span>￥2070.00</span> 起 <br>（此价格仅为实例价格）</div><a><button type="button" class="aps-ani-transition aps-widget aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-btn aps-btn-primary aps-size-large btn" style="width: 100%; font-size: 14px; font-weight: 200; margin-top: 6px;" onclick="shoppingNow(event)">立即购买</button></a></div>
+                            </div>
+                        </div>
+                        <div class="delivery-components" style="background-color: white;padding: 15px 25px;width: 70%;margin: 0 auto;margin-bottom: 0;">
+                            <div class="ecs-enterprise" style="display: flex;justify-content: space-evenly;">
+                                <div class="ecs-enterprise-fir">
+                                    <div class="fir-line">
+                                        <h2>通用网络增强型 sn2ne</h2>
+                                    </div>
+                                    <div class="ecs-desc"></div>
+                                    <div class="ecs-scene">场景:
+                                        <ul>
+                                            <li>高网络包收发场景，如视频弹幕、电信业务转发等</li>
+                                            <li>各种类型和规模的企业级应用</li>
+                                            <li>中小型数据库系统、缓存、搜索集群</li>
+                                            <li>数据分析和计算</li>
+                                            <li>计算集群、依赖内存的数据处理</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="ecs-enterprise-sec">
+                                    <div class="ecs-detail-info fir">
+                                        <h2>CPU内存比</h2>
+                                        <div>1:4</div>
+                                    </div>
+                                    <div class="ecs-detail-info sec">
+                                        <h2>CPU类型</h2>
+                                        <div>Intel Xeon E5-2682 v4（Broadwell）或Platinum 8163（Skylake） 2.5 GHz</div>
+                                    </div>
+                                    <div class="ecs-detail-info thr">
+                                        <h2>最大内网带宽</h2>
+                                        <div>10 Gbps</div>
+                                    </div>
+                                    <div class="ecs-detail-info fou">
+                                        <h2>最大网络收发包能力</h2>
+                                        <div>450 万PPS</div>
+                                    </div>
+                                </div>
+                                <div class="ecs-enterprise-thr">
+                                    <div class="ecs-pro-select"><span>地域</span>
+                                        <div value="cn-zhangjiakou-na62-a01" class="aps-widget aps-select aps-select-md" style="width: 170px;">
+                                            <div class="aps-selection aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-selected-close">
+                                                <div class="aps-selected-value">华北 3</div><i type="arrow-down" class="aps-icon aps-ani-transition aps-widget aps-icon-arrow-down aps-select-arrow aps-ani-transition"></i></div><span class="aps-state-hidden"></span><span class="aps-state-hidden"></span></div>
+                                    </div>
+                                    <div class="ecs-pro-select"><span>CPU内存</span>
+                                        <div value="ecs.sn2ne.large" class="aps-widget aps-select aps-select-md" style="width: 170px;">
+                                            <div class="aps-selection aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-selected-close">
+                                                <div class="aps-selected-value">2核 8GB</div><i type="arrow-down" class="aps-icon aps-ani-transition aps-widget aps-icon-arrow-down aps-select-arrow aps-ani-transition"></i></div><span class="aps-state-hidden"></span><span class="aps-state-hidden"></span></div>
+                                    </div>
+                                    <div class="ecs-pro-select"><span>购买时长</span>
+                                        <div value="1:year" class="aps-widget aps-select aps-select-md" style="width: 170px;">
+                                            <div class="aps-selection aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-selected-close">
+                                                <div class="aps-selected-value">1 年</div><i type="arrow-down" class="aps-icon aps-ani-transition aps-widget aps-icon-arrow-down aps-select-arrow aps-ani-transition"></i></div><span class="aps-state-hidden"></span><span class="aps-state-hidden"></span></div>
+                                    </div>
+                                    <div class="ecs-price"><span>￥2322.00</span> 起 <br>（此价格仅为实例价格）</div><a><button type="button" class="aps-ani-transition aps-widget aps-corner-tl aps-corner-tr aps-corner-bl aps-corner-br aps-btn aps-btn-primary aps-size-large btn" style="width: 100%; font-size: 14px; font-weight: 200; margin-top: 6px;" onclick="shoppingNow(event)">立即购买</button></a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Overlay Modal  -->
+        <div class="modal fade" id="projectModal1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title">Project Overview</h4>
+                    </div>
+                    <div class="modal-body">
+                        <!-- <h4>New home display </h4> -->
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer porttitor massa sed velit egestas vulputate. Morbi turpis tellus, porta in cursus at, finibus vitae dui. Nam mollis quam a sem iaculis euismod. Pellentesque habitant morbi tristique senectus.</p>
+                        <div class="summary-list row">
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-user fa-fw"></i> Name
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin"> Project Name </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-paint-brush fa-fw"></i> Created by
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin">Team Osahan</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-code fa-fw"></i> Skills
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin">
+                                        Photoshop and coraldraw ,
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-desktop fa-fw"></i> Services
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin">
+                                        Designing Service
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-link fa-fw"></i> Project Url
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <p class="no-margin"> <a href="#">www.shapebootstrap.net</a> </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 clearfix">
+                                <div class="type-info pull-left">
+                                    <i class="fa fa-share-alt fa-fw"></i> Share
+                                </div>
+                                <div class="info pull-right text-right">
+                                    <ul class="social-share-new">
+                                        <a href="#" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                                        <a href="#" class="btn-social btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                                        <a href="#" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                                        <a href="#" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                                        <a href="#" class="btn-social btn-email"><i class="fa fa-envelope-o"></i></a>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-lg btn-custom btn-block">Live Preview</button>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+    </section>
+    <!-- End Our Portfolio -->
+
+    <!-- Footer -->
+    <section id="footer" class="footer section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">About Us</h3>
+                    <ul class="menu">
+                        <li><a href="#">联系我们</a></li>
+                        <li><a href="#">支持计划</a></li>
+                        <li><a href="#">新手学堂</a></li>
+                        <li><a href="#">自助工具</a></li>
+                        <li><a href="#">咨询与设计</a></li>
+                        <li><a href="#">公告</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">Services</h3>
+                    <ul class="menu">
+                        <li><a href="#">管理控制台</a></li>
+                        <li><a href="#">备案管理</a></li>
+                        <li><a href="#">域名控制台</a></li>
+                        <li><a href="#">账号管理</a></li>
+                        <li><a href="#">索取发票</a></li>
+                        <li><a href="#">合规性</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">General Links</h3>
+                    <ul class="menu">
+                        <li><a href="#">域名信息查询</a></li>
+                        <li><a href="#">定价</a></li>
+                        <li><a href="#">客户案例</a></li>
+                        <li><a href="#">分析师报告</a></li>
+                        <li><a href="#">举报中心</a></li>
+                        <li><a href="#">产品图标</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <h3 class="column-title">Resource</h3>
+                    <ul class="menu">
+                        <li><a href="#">帮助文档</a></li>
+                        <li><a href="#">开发者中心</a></li>
+                        <li><a href="#">考试认证</a></li>
+                        <li><a href="#">在线工作坊</a></li>
+                        <li><a href="#">科技头条</a></li>
+                        <li><a href="#">教程教学</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Footer -->
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center">
+                    <div class="footer-social text-center">
+                        <ul class="social-share-new">
+                            <a href="#" class="btn-social btn-behance"><i class="fa fa-behance"></i></a>
+                            <a href="#" class="btn-social btn-dribbble"><i class="fa fa-dribbble"></i></a>
+                            <a href="#" class="btn-social btn-facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn-social btn-google-plus"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="btn-social btn-instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="btn-social btn-linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="btn-social btn-pinterest"><i class="fa fa-pinterest"></i></a>
+                            <a href="#" class="btn-social btn-skype"><i class="fa fa-skype"></i></a>
+                            <a href="#" class="btn-social btn-twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn-social btn-youtube"><i class="fa fa-youtube"></i></a>
+                            <a href="#" class="btn-social btn-email"><i class="fa fa-envelope-o"></i></a>
+                        </ul>
+                    </div>
+                    <div class="text-center">©金邦达集团 版权所有 1998-2018 粤ICP备06089952号-1 粤公网安备 44040202000557号 | 法律声明</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Footer Bottom -->
+
+    <div class="menu-modal serviceModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>热门产品</h2>
+        <div class="row" style="    margin-top: 30px;
+    padding: 25px;">
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+            <div class="col-md-4">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡平台</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-modal activityModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>最新活动</h2>
+        <div class="row" style="    margin-top: 30px;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-12">
+                <img src="images/activity/card.png" style="width: 30%;">
+                <p style="
+    display: inline-block;
+    padding-left: 15px;
+    font-size: 16px;
+">朋安易加入校园计划</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-modal solutionModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>解决方案</h2>
+        <div class="row" style="    margin-top: 30px;
+    padding: 25px;">
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+        </div>
+        <div class="row" style="    margin-top: 0;
+    padding: 25px;">
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+            <div class="col-md-6">
+                <img src="images/activity/card.png" style="width: 100%;" />
+                <p>会员卡解决方案</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu-modal partnerModal" style="width: 580px;text-align: center;background-color: #b2fbe9dd;position: absolute;top:50px;display: none;">
+        <a data-brackets-id="2648" class="page-scroll" style="color: black;"><input data-brackets-id="2649" type="search" placeholder="按品牌名或者关键词搜索" style="
+    border: none;
+    padding: 1px 25px 1px 10px;
+    border-radius: 2px;
+    text-indent: 2px;
+    min-width: 175px;
+    background-color: #f6f6f6;
+                margin: 30px 0;
+"><i data-brackets-id="2650" class="fa fa-search" style="
+    margin-left: -20px;
+    color: gray;
+"></i></a>
+        <h2>合作伙伴</h2>
+        <div class="row" style="   
+    padding: 25px;">
+            <div class="col-md-4">
+                <p>合作计划</p>
+                <ul>
+                    <li>朋安易会员卡计划</li>
+                    <li>园区会员卡计划</li>
+                    <li>社区卡计划</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p>合作公司</p>
+                <ul>
+                    <li>杭州公交</li>
+                    <li>轻松筹</li>
+                </ul>
+            </div>
+            <div class="col-md-4">
+                <p>客户案例</p>
+                <ul>
+                    <li>案例1</li>
+                    <li>案例2</li>
+                    <li>案例3</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Custom js -->
+    <script src="js/custom.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Portfolio Filters -->
+    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
+</body>
+
+</html>
