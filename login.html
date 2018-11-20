@@ -93,33 +93,42 @@
             top: 245px;
             left: 43%;
         }
+
     </style>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
-        function flipCard() {
-            document.querySelector('.flip-container').classList.toggle('hover');
-            $('.errMsg').text('');
+        function changeState() {
             if (location.hash == '#r') {
                 location.hash = '#l';
+                $('.skipBtn').text('免费注册');
             } else if (location.hash == '#l') {
                 location.hash = '#r';
+                $('.skipBtn').text('登录');
             } else {
                 console.log('location.hash is ' + location.hash);
             }
         }
 
+
+        function flipCard() {
+            document.querySelector('.flip-container').classList.toggle('hover');
+            $('.errMsg').text('');
+        }
+
+
         function goReg() {
-            if (location.hash != '#r') {
-                flipCard();
-            }
+            flipCard();
+            changeState();
         }
 
         $(function() {
 
             if (location.hash == '#r') {
                 flipCard();
+                changeState();
+                changeState();
             }
 
             $('.regBtn').on('click', function() {
@@ -144,6 +153,7 @@
                     setTimeout(function() {
                         toastr.remove()
                         flipCard();
+                        changeState();
                     }, 1500)
                 }
 
@@ -178,6 +188,7 @@
                 }
             })
         })
+
     </script>
 </head>
 
@@ -266,7 +277,7 @@
                         <h3> </h3>
                         <div class="social-login-buttons">
                             <a class="btn btn-link-2" onclick="goReg()">
-	                        		<i class="fa fa-leaf"></i> 免费注册
+	                        		<i class="fa fa-leaf"></i> <span class="skipBtn">免费注册</span>
 	                        	</a>
                             <a class="btn btn-link-2" href="index.html#">
 	                        		<i class="fa fa-home"></i> 首页

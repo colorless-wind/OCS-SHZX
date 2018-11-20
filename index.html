@@ -61,29 +61,28 @@
         .menu-modal h2 {
             font-weight: bold;
         }
-
     </style>
     <script>
         function openMenuModal(type) {
             $('.menu-modal').hide();
-            switch (type) {
-                case 'service':
-                    $('.menunav').after($('.serviceModal'));
-                    $('.serviceModal').show();
-                    break;
-                case 'activity':
-                    $('.menunav').after($('.activityModal'));
-                    $('.activityModal').show();
-                    break;
-                case 'solution':
-                    $('.menunav').after($('.solutionModal'));
-                    $('.solutionModal').show();
-                    break;
-                case 'partner':
-                    $('.menunav').after($('.partnerModal'));
-                    $('.partnerModal').show();
-                    break;
-            }
+                switch (type) {
+                    case 'service':
+                        $('.menunav').after($('.serviceModal'));
+                        $('.serviceModal').fadeIn(1000);
+                        break;
+                    case 'activity':
+                        $('.menunav').after($('.activityModal'));
+                        $('.activityModal').fadeIn(1000);
+                        break;
+                    case 'solution':
+                        $('.menunav').after($('.solutionModal'));
+                        $('.solutionModal').fadeIn(1000);
+                        break;
+                    case 'partner':
+                        $('.menunav').after($('.partnerModal'));
+                        $('.partnerModal').fadeIn(1000);
+                        break;
+                }
         }
 
         function closeMenuModal() {
@@ -95,7 +94,6 @@
                 closeMenuModal();
             })
         })
-
     </script>
 </head>
 
